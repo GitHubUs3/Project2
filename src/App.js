@@ -1,24 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { NavBar } from './components/NavBar';
+import { Container, Card} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import { Home } from './components/StoreInventory/home';
+import { Items } from './components/StoreInventory/items';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <NavBar/> // Keeps nav at top
+
+    <section className='nav-section'>
+      <div className='nav-item'>
+        <Link className='nav-item' to="/">Home</Link>
+      </div>
+      <div className='nav-item'>
+        <Link className='nav-item' to="/table">Items</Link>
+      </div>
+    </section>
+    
+    <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/table" element={<Items/>}/>
+    </Routes>
+    </BrowserRouter>
   );
 }
 
