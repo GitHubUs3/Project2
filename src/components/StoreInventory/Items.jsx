@@ -13,16 +13,16 @@ export const Items = () => {
 
 
     return (
-    <>
+    <> // Bare bones setup, still need to alter
     <Container className="text-center">
     <Table striped bordered hover size="sm" variant='light' responsive>
         <thead>
             <tr>
-                <td>Name</td>
-                <td>Reason</td>
-                <td>Notes</td>
-                <td>Status</td>
-                <td>Action</td>
+                <td>ID</td>
+                <td>Category</td>
+                <td>Description</td>
+                <td>Price</td>
+                <td>Store Location</td>
             </tr>
         </thead>
         <tbody>
