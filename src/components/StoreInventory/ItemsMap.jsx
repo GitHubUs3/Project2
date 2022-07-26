@@ -11,25 +11,41 @@ export const ItemsMap = ({e, setTable}) => {
     const handleDelete = async () => {
         try {                                 // Need to change later
             const s = await axios.delete(`http://localhost:8080/id=${e.id}`);
-             setEmp(e.filter((employee) => {return e.expenseId !== employee.id}));
+             setTable(e.filter((table) => {return e.id !== table.id}));
          }
          catch (err) {
              console.log(err);
          }
     }
 
+    // Need to check if this works
     const handleEdit = async () => {
         try {                                 // Need to change later
             const s = await axios.handleEdit(`http://localhost:8080/id=${e.id}`)
-             setEmp(e.filter((employee) => {return e.expenseId !== employee.id}));
+             setTable(e.filter((table) => {return e.id !== table.id}));
          }
          catch (err) {
              console.log(err);
          }
     }
 
+    // variable for keeping state of buttons from reverting (to original status) once selected
+    const [a, setA] = useState(false);
+
+    useEffect(() => {// checks if status was already changed
+            // May have to change this
+        if(e.status === 2 || e.status === 3){
+            console.log(e.status)
+            setA(true);
+        }
+        else{
+            setA(false);
+        }
+    })
+
+    // May need to change
     return (
-    <tr>
+    <tr> 
         <td>{e.id}</td>
         <td>{e.category}</td>
         <td>{e.description}</td>
@@ -40,6 +56,5 @@ export const ItemsMap = ({e, setTable}) => {
         <button onClick={handleDelete}>Delete</button>
         </td>
     </tr>
-
     );
 }

@@ -10,7 +10,7 @@ import { Items } from './components/StoreInventory/items';
 function App() {
   return (
     <BrowserRouter>
-    <NavBar/> // Keeps nav at top
+    <NavBar/> // Keeps nav at the top
 
     <section className='nav-section'>
       <div className='nav-item'>
